@@ -9,6 +9,15 @@ FROM node:alpine
 # COPY runs
 WORKDIR /usr/app
 
+# Minimizing unnecessary rebuilds of cached files,
+# eg. after making changes to index.js theres no need to rebuild package.json,
+# so we copy package.json to the container file seperately, that way we do 
+# not rebuild it if no changes are made to the file
+COPY ./package.json ./
+
+# Install dependencies
+RUN npm install
+
 # NOTE, the files eg. index.js, package.json are outside of the container,
 # they are not made available to the container by default, its the developer
 # job to make this possible, by editting the Dockerfile
@@ -22,9 +31,6 @@ WORKDIR /usr/app
 # Copy from current working dir "simpleweb" 
 # to the current working dir inside the container
 COPY ./ ./
-
-# Install dependencies
-RUN npm install
 
 # Default startup command
 CMD ["npm", "start"]
