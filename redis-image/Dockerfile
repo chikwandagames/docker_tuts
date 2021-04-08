@@ -17,9 +17,12 @@ RUN apk add --update redis
 # in this case redis-server
 CMD ["redis-server"]
 
-# To run
-# docker build .
-# docker run <sha256_hash>
+# Tagging the Image
+# So that we don't need to specify sha hash to run i.e. docker run <sha256_hash>
+# we can tag using
+# docker bulid mubeji/my-redis:latest .
+# Then now, to run
+# docker run mubeji/my-redis
 
 
 # docker build .
