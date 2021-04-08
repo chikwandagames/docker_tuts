@@ -2,6 +2,13 @@
 # alpine, means a barebones version, with as little as possible
 FROM node:alpine
 
+# To prevent copying files into the containers root dir, which could
+# accidintally override container default system files or folders
+# after WORKDIR /usr/app 
+# all files will now be copied to the container /user/app file
+# COPY runs
+WORKDIR /usr/app
+
 # NOTE, the files eg. index.js, package.json are outside of the container,
 # they are not made available to the container by default, its the developer
 # job to make this possible, by editting the Dockerfile
@@ -44,4 +51,12 @@ CMD ["npm", "start"]
 # docker run -p 8080:8080 <imag_mame_or_id>
 # docker run -p 8080:8080 mubeji/my-simpleweb
 
+# To access the container files via terminal
+# docker run -it mubeji/m-simpleweb sh
 
+# or 
+
+# to run an extra command in the already running container
+# docker exec -it <sha256_hash> sh
+# "remember, docker ps, to retrieve the hash"
+# then, ls 
