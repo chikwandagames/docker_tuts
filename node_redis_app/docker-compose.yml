@@ -10,6 +10,8 @@ services:
   
   # Create service called node-app
   my-node-app:
+    # Restart policy
+    restart: always
     # Look in the currend dir for a docker file and use that to build this image
     build: .
     # Port
@@ -23,3 +25,18 @@ services:
 # docker compose will automatically handle the networking, and allow
 # for the 2 containers to communicate freely
 
+
+# To run
+# docker-compose up -d
+
+# To stop
+# docker-compose down
+
+# in the browser
+# localhost:4001
+
+# Restart policies
+# 1. "no", never attempt to restart the container if it stops or crashes, must be in quotes
+# 2. always, if container stops for any reason, always attempt to restart is
+# 3. on-faliure, only restart, if container stops with an error code
+# 4. unless-stopped, always restart unless we (the devs) forcibly stop the container
