@@ -1,0 +1,25 @@
+version: '3'
+
+# Tell docker compose what we want it to do,
+# a service is a type of container
+services:
+  # Create service called redis-server
+  my-redis-server:
+    # Image we want docker to use to create this service/container
+    image: 'redis'
+  
+  # Create service called node-app
+  my-node-app:
+    # Look in the currend dir for a docker file and use that to build this image
+    build: .
+    # Port
+    ports:
+      # "-" is an array
+      # Map local first "machine port 4001" to : second "container port 8080"
+      - "4001:8080"
+
+
+# By creating the 2 services using docker compose,
+# docker compose will automatically handle the networking, and allow
+# for the 2 containers to communicate freely
+

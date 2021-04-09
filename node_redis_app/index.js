@@ -5,7 +5,12 @@ const redis = require('redis')
 
 const app = express()
 // Setup a connection the redis server
-const client = redis.createClient()
+const client = redis.createClient({
+  // Connect to the service created in docker-compose file called "redis-server"
+  host: 'my-redis-server',
+  // Default redis port
+  port: 6379
+})
 // Set visits to 0, on start
 client.set('visits', 0)
 
