@@ -16,6 +16,30 @@ CMD ["npm", "run", "start"]
 # docker build -f Dockerfile.dev .
 # "-f" lets you specify the file to be used to buld the image
 
+# docker run -it -p 3000:3000 <image_id>
+
+
+# Docker Volumes -v
+# Its a bit like nodemon
+# Used so that we don't have to rebuild the image each time we make changes to 
+# the source code
+# Its similar to the port mappings from local machine to container
+# In the container /app dir files and folders we create references that point to the 
+# files and folders in the local root dir i.e. fronted folder
+
+# To run using docker volumes 
+# docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app <image_id>
+
+# -v /app/node_modules, tells docker NOT to try map that file to any file on the
+# local machine root dir, because node_modules does not exist in the local root dir
+# as we deleted it, to prevent copying it as it exits in /app dir on the container
+
+# -v $(pwd):/app, maps the local machine root dir .../frontend to the container root /app
+
+
+
+
+
 
 
 
