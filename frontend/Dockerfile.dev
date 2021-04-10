@@ -1,0 +1,22 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+# copy package.json to the container working dir "./app"
+COPY package.json .
+
+RUN npm install
+
+# Copy the rest of the files and dir in frontend folder to container "./app" dir
+COPY . .
+
+CMD ["npm", "run", "start"]
+
+# To run
+# docker build -f Dockerfile.dev .
+# "-f" lets you specify the file to be used to buld the image
+
+
+
+
+
