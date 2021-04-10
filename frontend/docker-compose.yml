@@ -1,0 +1,23 @@
+version: '3'
+services:
+  my-react-app: 
+    build: 
+      # Because we do not have a Dockerfile, we need to use context: to specify
+      # where all the files and folders for this image should be pulled from
+      # "." i.e. the current working dir
+      context: .
+      # Look in the root dir find a file "Dockerfile.dev" and use that to buld the image
+      dockerfile: Dockerfile.dev
+
+    # Port mapping
+    ports: 
+      - "3000:3000"
+    # So that we don't need to use the long winded volume -v comand on docker run
+    volumes:
+      # Ignore node_modules when maping
+      - /app/node_modules
+      # Map the local root dir "." i.e. frontend to the container root dir /app
+      - .:/app
+
+# To run 
+# docker compose up

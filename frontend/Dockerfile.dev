@@ -36,6 +36,10 @@ CMD ["npm", "run", "start"]
 
 # -v $(pwd):/app, maps the local machine root dir .../frontend to the container root /app
 
+# To run test
+# 1. docker build -f Dockerfile.dev .
+# 2. docker run -it <image_id> npm run test
+# 
 
 
 
