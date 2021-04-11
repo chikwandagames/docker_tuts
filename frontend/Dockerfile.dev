@@ -39,7 +39,11 @@ CMD ["npm", "run", "start"]
 # To run test
 # 1. docker build -f Dockerfile.dev .
 # 2. docker run -it <image_id> npm run test
-# 
+
+# To open in terminal
+# 1. docker build -f Dockerfile.dev .
+# 2. docker run -it <image_id> sh
+
 
 
 

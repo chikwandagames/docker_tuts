@@ -20,4 +20,11 @@ services:
       - .:/app
 
 # To run 
-# docker compose up
+# docker-compose up
+
+# For live updating tests, so that if we make changes to App.test.js, changes
+# are refleced live in the terminal test suit
+# 1. docker-compose up  
+#    docker ps, to get container id
+#    then execute the next command in the running container
+# 2. docker exec -it <container_id> npm run test
