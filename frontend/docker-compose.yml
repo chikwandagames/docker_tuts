@@ -18,6 +18,22 @@ services:
       - /app/node_modules
       # Map the local root dir "." i.e. frontend to the container root dir /app
       - .:/app
+  # Test service, soley for running tests, this spins up a second container, the
+  # PROBLEM with this approach is that we don't get access to the terminal for 
+  # interaction with the test suit
+  my-tests:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+
+    volumes:
+      - /app/node_modules
+      - .:/app
+    # Override the start up command CMD ["npm", "run", "start"] in Dockerfile.dev
+    command: ["npm", "run", "test"]
+
+
+
 
 # To run 
 # docker-compose up
