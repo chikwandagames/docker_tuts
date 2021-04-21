@@ -1,0 +1,13 @@
+version: '3'
+
+services: 
+  #  Name of services
+  my-postgres:
+    # Base image to use for this service
+    image: 'postgres:latest'
+
+
+
+
+# To run 
+# docker compose up
