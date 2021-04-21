@@ -65,7 +65,7 @@ export default class Fib extends Component {
           <h3>Seen indexes:</h3>
           {this.renderSeenIndexes()}
           <h3>Calculated values:</h3>
-          {this.renderValues}
+          {this.renderValues()}
         </form>
       </div> 
     )

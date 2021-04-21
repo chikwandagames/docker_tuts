@@ -82,3 +82,5 @@ services:
 
 # To run 
 # docker compose up
+# in the browser
+# localhost:3050, set in the nginx service
