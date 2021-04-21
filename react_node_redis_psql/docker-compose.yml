@@ -58,7 +58,17 @@ services:
       - /app/node_modules
       - ./worker:/app
 
-
+  # Nginx servic
+  # This will handle the routing, from browser request to node server or react ap
+  my-nginx:
+    # We want this service running 100% of the time
+    restart: always
+    build: 
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    # 3050 on localhost
+    ports: 
+      - '3050:80'
 
 
 
