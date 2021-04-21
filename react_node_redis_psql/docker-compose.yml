@@ -40,6 +40,31 @@ services:
       - PGPASSWORD=postgres_password
       - PGPORT=5432
 
+  my-client:
+    stdin_open: true
+    build: 
+      # Use Dockerfile.dev inside ./client dir
+      dockerfile: Dockerfile.dev
+      context: ./client
+    volumes: 
+      - /app/node_modules
+      - ./client:/app
+
+  my-worker:
+    build: 
+      dockerfile: Dockerfile.dev
+      context: ./worker
+    volumes: 
+      - /app/node_modules
+      - ./worker:/app
+
+
+
+
+
+
+
+
 
 
 
