@@ -6,6 +6,26 @@ services:
     # Base image to use for this service
     image: 'postgres:latest'
 
+  my-redis:
+    image: 'redis:lates'
+
+  my-server:
+    build: 
+      # Specify docker file to be used, without specifyin the path to server
+      # that is handled by the context
+      dockerfile: Dockerfile.dev
+      # Specify the dir to look for the Dockerfile.dev file
+      context: ./server
+    volumes: 
+      # Ignore node_modules when maping, 
+      # IOW, inside the container don't override this dir
+      - /app/node_modules 
+      # Map everything in the local server dir to the container ./app root dir 
+      # This will work like nodemon
+      - ./server:/app
+
+
+
 
 
 
