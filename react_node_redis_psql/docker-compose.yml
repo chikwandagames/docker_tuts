@@ -5,10 +5,13 @@ services:
   my-postgres:
     # Base image to use for this service
     image: 'postgres:latest'
+    environment: 
+      # postgres_passord is the defalut password for postgres
+      - POSTGRES_PASSWORD=postgres_password
 
   my-redis:
-    image: 'redis:lates'
-
+    image: 'redis:latest'
+    
   my-server:
     build: 
       # Specify docker file to be used, without specifyin the path to server
@@ -23,6 +26,19 @@ services:
       # Map everything in the local server dir to the container ./app root dir 
       # This will work like nodemon
       - ./server:/app
+    # Invironment variables, this will be setup in the container at runtime
+    environment: 
+      # REDIS_HOST=nameOfService
+      - REDIS_HOST=my-redis
+      # Redis port
+      - REDIS_PORT=6379
+      - PGUSER=postgres
+      # PGHOST=nameOfService
+      - PGHOST=my-postgres
+      - PGDATABASE=postgres
+      # postgres_passord is the defalut password for postgres
+      - PGPASSWORD=postgres_password
+      - PGPORT=5432
 
 
 
